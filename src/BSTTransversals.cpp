@@ -22,14 +22,57 @@ struct node{
 	struct node *right;
 };
 
+void inorder_travs(struct node *root, int *arr, int *len)
+{
+	if (root == NULL)
+		return;
+	inorder_travs(root->left, arr, len);
+	arr[*len] = root->data;
+	*len = *len + 1;
+	inorder_travs(root->right, arr, len);
+}
 
-void inorder(struct node *root, int *arr){
-	
+void inorder(struct node *root, int *arr)
+{
+	if ((root == NULL) || (arr == NULL))
+		return;
+	int len = 0;
+	inorder_travs(root, arr, &len);
 }
-void preorder(struct node *root, int *arr){
-	
+
+void preorder_travs(struct node *root, int *arr, int *len)
+{
+	if (root == NULL)
+		return;
+	arr[*len] = root->data;
+	*len = *len + 1;
+	inorder_travs(root->left, arr, len);
+	inorder_travs(root->right, arr, len);
 }
-void postorder(struct node *root, int *arr){
-	
+
+void preorder(struct node *root, int *arr)
+{
+	if ((root == NULL) || (arr == NULL))
+		return;
+	int len = 0;
+	preorder_travs(root, arr, &len);
+}
+
+void postorder_travs(struct node *root, int *arr, int *len)
+{
+	if (root == NULL)
+		return;
+	inorder_travs(root->left, arr, len);
+	inorder_travs(root->right, arr, len);
+	arr[*len] = root->data;
+	*len = *len + 1;
+}
+
+void postorder(struct node *root, int *arr)
+{
+	if ((root == NULL) || (arr == NULL))
+		return;
+	int len = 0;
+	postorder_travs(root, arr, &len);
 }
 

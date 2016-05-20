@@ -159,7 +159,7 @@ namespace spec
 					c2 = 1;
 				}
 			}
-			check = check + c2 + c3;;
+			check = check + c2 + c3;
 			Assert::AreEqual(3, check, L"Array to BSt One failed", 1, 2);
 		};
 
