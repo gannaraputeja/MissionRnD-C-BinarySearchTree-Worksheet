@@ -52,6 +52,8 @@ struct node* bst(int *arr, int low, int high)
 
 struct node * convert_array_to_bst(int *arr, int len)
 {
+	if (arr == NULL)
+		return NULL;
 	struct node *root = (struct node *)malloc(sizeof(struct node));
 	root = bst(arr, 0, len - 1);
 	return root;
